@@ -4,7 +4,7 @@ var BlenoPrimaryService = bleno.PrimaryService;
 var Throttle = require('./characteristics/throttle');
 var Steering = require('./characteristics/steering');
 
-console.log('bleno - echo');
+console.log('bleno - RCCar (main)');
 
 bleno.on('stateChange', function(state) {
   console.log('on -> stateChange: ' + state);

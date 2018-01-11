@@ -9,7 +9,7 @@ bleno.on('stateChange', function(state) {
 
   if (state === 'poweredOn') {
 
-    bleno.startAdvertising(bleno.name, [carService.uuid]);
+    bleno.startAdvertising('RCCar', [carService.uuid]);
   }
   else {
 

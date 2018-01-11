@@ -39,7 +39,7 @@ If you would like to permanently disable the daemon issue:
 ```
 sudo systemctl disable bluetooth
 ```
-If you need the daemon after disabling the daemon You can power up the Bluetooth adapter after stopping the bluetooth daemon. 
+You need to power up the Bluetooth adapter after stopping the bluetooth daemon. before running the RCcar service. Bring up the BT adapter with: 
 
 ```
 sudo hciconfig hci0 up

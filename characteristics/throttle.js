@@ -6,7 +6,7 @@ var BlenoCharacteristic = bleno.Characteristic;
 var ThrottleCharacteristic = function() {
  ThrottleCharacteristic.super_.call(this, {
     uuid: '00000000-0000-1000-8000-00805F9B34F1',
-    properties: ['read', 'write', 'notify'],
+    properties: ['read', 'write', 'writeWithoutResponse', 'notify'],
     value: 0
   });
 

@@ -6,7 +6,7 @@ var BlenoCharacteristic = bleno.Characteristic;
 var SteeringCharacteristic = function() {
  SteeringCharacteristic.super_.call(this, {
     uuid: '00000000-0000-1000-8000-00805F9B34F2',
-    properties: ['read', 'write', 'notify'],
+    properties: ['read', 'write', 'writeWithoutResponse', 'notify'],
     value: 0
   });
 

@@ -9,6 +9,10 @@
   "author": "Gustaf Nilklint",
   "license": "MIT",
   "dependencies": {
-    "bleno": "^0.3.5"
+    "bleno": "^0.3.5",
+    "ref": "git://github.com/TooTallNate/ref.git#924437f94b0f24323008990319871ffcbfc75cd",
+    "ref-struct": "~1.1.0",
+    "ref-array": "~1.2.0",
+    "ioctl": "~2.0.1"
   }
 }

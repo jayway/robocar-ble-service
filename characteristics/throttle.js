@@ -3,7 +3,7 @@ var util = require('util');
 
 var BlenoCharacteristic = bleno.Characteristic;
 
-var ThrottleCharacteristic = function() {
+var ThrottleCharacteristic = function(gamepad) {
  ThrottleCharacteristic.super_.call(this, {
     uuid: '00000000-0000-1000-8000-00805F9B34F1',
     properties: ['read', 'write', 'writeWithoutResponse', 'notify'],
@@ -12,6 +12,7 @@ var ThrottleCharacteristic = function() {
 
  this._value = new Buffer(0);
  this._updateValueCallback = null;
+ this.gamepad = gamepad;
 };
 
 ThrottleCharacteristic.prototype.onReadRequest = function(offset, callback) {
@@ -23,8 +24,10 @@ ThrottleCharacteristic.prototype.onReadRequest = function(offset, callback) {
 ThrottleCharacteristic.prototype.onWriteRequest = function(data, offset, withoutResponse, callback) {
   this._value = data;
 
-  console.log('ThrottleCharacteristic - onWriteRequest: value = ' + this._value.toString('hex'));
-
+  let event = {type: 0x03, code: 0x05, value: parseInt(this._value, 8) + 127}
+  this.gamepad.sendEvent(event)
+  
+  //console.log('ThrottleCharacteristic - onWriteRequest: value = ' + this._value.toString('hex'));
   if (this._updateValueCallback) {
     console.log('ThrottleCharacteristic - onWriteRequest: notifying');
 

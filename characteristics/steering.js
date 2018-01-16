@@ -8,7 +8,6 @@ var SteeringCharacteristic = function(gamepad) {
     uuid: '00000000-0000-1000-8000-00805F9B34F2',
     properties: ['read', 'write', 'writeWithoutResponse', 'notify'],
     value: 0
-    this.gamepad = gamepad;
   });
 
  this._value = new Buffer(0);

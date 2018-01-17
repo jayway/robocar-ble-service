@@ -23,9 +23,10 @@ SteeringCharacteristic.prototype.onReadRequest = function(offset, callback) {
 
 SteeringCharacteristic.prototype.onWriteRequest = function(data, offset, withoutResponse, callback) {
   this._value = data;
-  console.log('data: ', data, typeof data);
-  console.log('hex: ', data.toString('hex'));
-  let event = {type: 0x03, code: 0x00, value: parseInt(this._value, 8) + 127}
+  
+  //console.log('data: ', data);
+  //console.log('hex: ', data.toString('hex'));
+  let event = {type: 0x03, code: 0x00, value: (data.readInt8(0) + 127)}
   this.gamepad.sendEvent(event)
 
   //console.log('SteeringCharacteristic - onWriteRequest: value = ' + this._value.toString('hex'));

@@ -10,7 +10,11 @@ let gamepad;
 function RCCarService() {
 
   gamepad = new virtual_gamepad()
-  gamepad.connect()
+  gamepad.connect(function() {
+    return callback(0);
+  }, function(err) {
+    return callback(-1);
+  });
 
   bleno.PrimaryService.call(this, {
     uuid: '00000000-0000-1000-8000-00805F9B34F0',

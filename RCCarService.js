@@ -11,9 +11,9 @@ function RCCarService() {
 
   gamepad = new virtual_gamepad()
   gamepad.connect(function() {
-    return callback(0);
+    return 0;
   }, function(err) {
-    return callback(-1);
+    return -1;
   });
 
   bleno.PrimaryService.call(this, {

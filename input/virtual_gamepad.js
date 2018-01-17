@@ -38,7 +38,7 @@ Virtual gamepad class
             ioctl(_this.fd, uinput.UI_SET_KEYBIT, uinput.BTN_SELECT);
             ioctl(_this.fd, uinput.UI_SET_EVBIT, uinput.EV_ABS);
             ioctl(_this.fd, uinput.UI_SET_ABSBIT, uinput.ABS_X);
-            ioctl(_this.fd, uinput.UI_SET_ABSBIT, uinput.ABS_Y);
+            ioctl(_this.fd, uinput.UI_SET_ABSBIT, uinput.ABS_RZ);
             uidev = new uinputStructs.uinput_user_dev;
             uidev_buffer = uidev.ref();
             uidev_buffer.fill(0);
@@ -51,10 +51,10 @@ Virtual gamepad class
             uidev.absmin[uinput.ABS_X] = 0;
             uidev.absfuzz[uinput.ABS_X] = 0;
             uidev.absflat[uinput.ABS_X] = 15;
-            uidev.absmax[uinput.ABS_Y] = 255;
-            uidev.absmin[uinput.ABS_Y] = 0;
-            uidev.absfuzz[uinput.ABS_Y] = 0;
-            uidev.absflat[uinput.ABS_Y] = 15;
+            uidev.absmax[uinput.ABS_RZ] = 255;
+            uidev.absmin[uinput.ABS_RZ] = 0;
+            uidev.absfuzz[uinput.ABS_RZ] = 0;
+            uidev.absflat[uinput.ABS_RZ] = 15;
             return fs.write(_this.fd, uidev_buffer, 0, uidev_buffer.length, null, function(err) {
               var error1;
               if (err) {
@@ -66,7 +66,8 @@ Virtual gamepad class
                   return callback();
                 } catch (error1) {
                   err = error1;
-                  console.log("Error on gamepad create dev:\n");
+                  console.log("Error on gamepad create dev:\n ${} ");
+                  console.log(err);
                   fs.close(_this.fd);
                   _this.fd = void 0;
                   if (retry < 5) {

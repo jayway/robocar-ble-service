@@ -1,5 +1,5 @@
 var bleno = require('bleno');
-
+var os = require('os');
 var RCCarService = require('./RCCarService');
 
 var carService = new RCCarService();
@@ -10,7 +10,7 @@ bleno.on('stateChange', function(state) {
   console.log('on -> stateChange: ' + state);
 
   if (state === 'poweredOn') {
-    bleno.startAdvertising('RCCar', [carService.uuid]);
+    bleno.startAdvertising(`RCCar-${os.hostname()}`, [carService.uuid]);
   }else {
     bleno.stopAdvertising();
   }

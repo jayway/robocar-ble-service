@@ -96,7 +96,7 @@ Virtual gamepad class
 
     virtual_gamepad.prototype.sendEvent = function(event, error) {
       var err, error1, error2, ev, ev_buffer, ev_end, ev_end_buffer;
-      console.log("gampadEvent ", event.code, event.value);
+      //console.log("gampadEvent ", event.code, event.value);
       if (this.fd) {
         ev = new uinputStructs.input_event;
         ev.type = event.type;

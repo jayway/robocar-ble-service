@@ -5,6 +5,7 @@ var RCCarService = require('./RCCarService');
 var carService = new RCCarService();
 
 console.log('bleno - RCCar (index)');
+process.env['BLENO_DEVICE_NAME'] = `RCCar-${os.hostname()}`;
 
 bleno.on('stateChange', function(state) {
   console.log('on -> stateChange: ' + state);

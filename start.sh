@@ -1,4 +1,4 @@
 #!/bin/bash
 . /home/pi/.nvm/nvm.sh
-cd $HOME/robocar-ble-service
+cd /home/pi/robocar-ble-service
 npm start

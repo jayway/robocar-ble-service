@@ -1,0 +1,11 @@
+[Unit]
+Description=Robocar BLE Service
+After=network.target
+
+[Service]
+ExecStart=/home/pi/robocar-ble-service/start.sh
+Restart=always
+User=pi
+
+[Install]
+WantedBy=multi-user.target

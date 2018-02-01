@@ -1,18 +1,18 @@
-var bleno = require('bleno');
-var os = require('os');
-var RCCarService = require('./RCCarService');
+const bleno = require('bleno');
+const os = require('os');
+const RCCarService = require('./RCCarService');
 
-var carService = new RCCarService();
+const carService = new RCCarService();
 
-console.log('bleno - RCCar (index)');
-process.env['BLENO_DEVICE_NAME'] = `RCCar-${os.hostname()}`;
+const hostName = process.env['BLENO_DEVICE_NAME'];
+console.log(`Starting ${hostName} BLE service`);
 
 bleno.on('stateChange', function(state) {
   console.log('on -> stateChange: ' + state);
 
   if (state === 'poweredOn') {
-    bleno.startAdvertising(`RCCar-${os.hostname()}`, [carService.uuid]);
-  }else {
+    bleno.startAdvertising(hostName, [carService.uuid]);
+  } else {
     bleno.stopAdvertising();
   }
 });
